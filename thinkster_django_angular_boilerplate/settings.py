@@ -116,4 +116,4 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Set the authentication model to be Account
-AUTH_USER_MODEL = 'authentication.account'
+AUTH_USER_MODEL = 'authentication.Account'
