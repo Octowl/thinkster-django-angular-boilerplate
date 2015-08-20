@@ -61,7 +61,25 @@
         function login(email, password) {
             return $http.post('/api/v1/auth/login/', {
                 email: email, password: password
-            });
+            }).then(loginSuccessFn, loginErrorFn);
+
+            /**
+             * @name loginSuccessFn
+             * @desc Set the authenticated account and redirect to index
+             */
+            function loginSuccessFn(data, status, headers, config) {
+                Authentication.setAuthenticatedAccount(data.data);
+
+                window.location = '/';
+            }
+
+            /**
+             * @name loginErrorFn
+             * @desc Log "Epic failure!" to the console
+             */
+            function loginErrorFn(data, status, headers, config) {
+                console.error('Epic failure!');
+            }
         }
 
         /**
@@ -81,7 +99,7 @@
         /**
          * @name isAuthenticated
          * @desc Check if the current user is authenticated
-         * @returns {boolean} True is user is authenticated, else false.
+         * @returns {boolean} True if user is authenticated, else false.
          * @memberOf thinkster.authentication.services.Authentication
          */
         function isAuthenticated() {
