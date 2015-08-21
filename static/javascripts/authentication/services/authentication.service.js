@@ -24,6 +24,7 @@
             getAuthenticatedAccount: getAuthenticatedAccount,
             isAuthenticated: isAuthenticated,
             login: login,
+            logout: logout,
             register: register,
             setAuthenticatedAccount: setAuthenticatedAccount,
             unauthenticate: unauthenticate
@@ -62,7 +63,7 @@
              * @desc Log "Epic failure!" to the console
              */
             function registerErrorFn(data, status, headers, config) {
-                console.log('Epic failure!');
+                console.error('Epic failure!');
             }
         }
 
@@ -94,6 +95,35 @@
              * @desc Log "Epic failure!" to the console
              */
             function loginErrorFn(data, status, headers, config) {
+                console.error('Epic failure!');
+            }
+        }
+
+        /**
+         * @name logout
+         * @desc Try to log the user out
+         * @returns {Promie}
+         * @memberOf thinkster.authentication.services.Authentication
+         */
+        function logout() {
+            return $http.post('/api/v1/auth/logout/')
+                .then(logoutSuccessFn, logoutErrorFn);
+
+            /**
+             * @name logoutSuccessFn
+             * @desc unauthenticate and redirect to index with page reload
+             */
+            function logoutSuccessFn(data, status, headers, config) {
+                Authentication.unauthenticate();
+
+                window.location = '/';
+            }
+
+            /**
+             * @name logoutErrorFn
+             * @desc Log "Epic failure!" to the console
+             */
+            function logoutErrorFn(data, status, headers, config) {
                 console.error('Epic failure!');
             }
         }
