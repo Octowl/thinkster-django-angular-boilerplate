@@ -1,3 +1,4 @@
+
 /**
  * NavbarController
  * @namespace thinkster.layout.controllers
