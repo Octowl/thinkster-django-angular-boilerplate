@@ -28,4 +28,4 @@ class AccountPostViewSet(viewsets.ViewSet):
         queryset = self.queryset.filter(author__username=account_username)
         serializer = self.serializer_class(queryset, many=True)
 
-        return response(serializer.data)
+        return Response(serializer.data)
