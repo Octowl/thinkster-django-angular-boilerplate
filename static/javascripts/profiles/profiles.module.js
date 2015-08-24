@@ -4,7 +4,7 @@
     angular
         .module('thinkster.profiles', [
             'thinkster.profiles.controllers',
-            'thinkster.profile.services'
+            'thinkster.profiles.services'
         ]);
 
     angular
