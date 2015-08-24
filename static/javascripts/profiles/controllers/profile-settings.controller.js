@@ -6,7 +6,7 @@
     'use strict';
 
     angular
-        .module('thinkster.profiles.controller')
+        .module('thinkster.profiles.controllers')
         .controller('ProfileSettingsController', ProfileSettingsController);
 
     ProfileSettingsController.$inject = [
@@ -71,7 +71,7 @@
          * @memberOf thinkster.profiles.controller.ProfileSettingsController
          */
         function destroy() {
-            Profile.destroy(vm.profile.username).then(profileSuccessFn, profileErrorFn);
+            Profile.destroy(vm.profile).then(profileSuccessFn, profileErrorFn);
 
             /**
              * @name profileSuccessFn
