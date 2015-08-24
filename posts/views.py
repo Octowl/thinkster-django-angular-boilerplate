@@ -20,6 +20,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
         return super(PostViewSet, self).perform_create(serializer)
 
+
 class AccountPostsViewSet(viewsets.ViewSet):
     queryset = Post.objects.select_related('author').all()
     serializer_class = PostSerializer
